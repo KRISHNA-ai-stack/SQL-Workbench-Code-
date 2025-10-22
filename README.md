@@ -1,99 +1,65 @@
--- CREATE DATABASE College; 
-CREATE DATABASE InstaGram;
--- CREATE DATABASE Company;
-USE Instagram;
+-- Database creation
+CREATE DATABASE Tesla;
+USE Tesla;
 
+-- Table creation
+CREATE TABLE Tesla_Employees (
+    emp_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50),
+    department VARCHAR(50),
+    position VARCHAR(50),
+    salary DECIMAL(10,2),
+    hire_date DATE,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15),
+    location VARCHAR(50),
+    manager_id INT
+);
 
--- USE InstaGram;
--- USE College;
+-- Insert records
+INSERT INTO Tesla_Employees 
+(first_name, last_name, department, position, salary, hire_date, email, phone, location, manager_id)
+VALUES
+('Elon', 'Musk', 'Management', 'CEO', 1000000.00, '2010-07-01', 'elon.musk@tesla.com', '9876543210', 'Austin', NULL),
+('Franz', 'von Holzhausen', 'Design', 'Chief Designer', 450000.00, '2012-04-15', 'franz.h@tesla.com', '9988776655', 'Los Angeles', 1),
+('Drew', 'Baglino', 'Engineering', 'SVP of Powertrain', 400000.00, '2013-09-20', 'drew.b@tesla.com', '9123456789', 'Austin', 1),
+('Kate', 'Smith', 'Finance', 'Financial Analyst', 120000.00, '2018-06-10', 'kate.s@tesla.com', '9001122334', 'Austin', 3),
+('Ryan', 'Patel', 'HR', 'HR Manager', 150000.00, '2016-11-25', 'ryan.p@tesla.com', '9112233445', 'Austin', 1);
 
+-- Select queries
+-- Get all employees
+SELECT * FROM Tesla_Employees;
 
--- CREATE TABLE Student (
--- 	roll_number INT , 
---     student_name VARCHAR(30) , 
---     age INT 
--- );
+-- Get specific columns
+SELECT first_name, last_name FROM Tesla_Employees;
+SELECT department FROM Tesla_Employees;
+SELECT position FROM Tesla_Employees;
+SELECT salary FROM Tesla_Employees;
+SELECT hire_date FROM Tesla_Employees;
+SELECT email FROM Tesla_Employees;
+SELECT phone FROM Tesla_Employees;
+SELECT location FROM Tesla_Employees;
+SELECT manager_id FROM Tesla_Employees;
 
--- INSERT INTO Student
--- VALUES
--- (109 , "Alex" , 20), 
--- (110 , "Sham" , 24),
--- (111 , "Bob" , 28);
+-- Distinct managers
+SELECT DISTINCT manager_id FROM Tesla_Employees;
 
--- SELECT * FROM Student;
--- SHOW DATABASES;
--- SHOW TABLES;
+-- Filtering examples
+-- WHERE salary > 160000
+-- WHERE manager_id = 1
+-- LIMIT 3
+-- WHERE email IN ('elon.musk@tesla.com', 'ryan.p@tesla.com', 'kate.s@tesla.com')
+-- WHERE salary > 160000 AND manager_id = 1
+-- WHERE salary > 160000 OR manager_id = 1
+-- WHERE salary BETWEEN 150000.00 AND 1000000.00
 
+-- Ordering
+-- ORDER BY first_name, last_name ASC;
 
-CREATE TABLE Users (
-	id INT PRIMARY KEY , 
-    age INT ,
-    User_Name VARCHAR (30) NOT NULL , 
-    Email VARCHAR (50) UNIQUE  , 
-    Followers INT DEFAULT 25000 , 
-    User_Following INT ,
-    CONSTRAINT CHECK ( age >= 18 ) 
-) ;
-
--- CREATE TABLE Post (
--- 	id INT PRIMARY KEY , 
---     content VARCHAR ( 100 ) , 
---     User_id INT ,
---     FOREIGN KEY ( User_id ) REFERENCES Users(id) 
--- ) ;
-
-INSERT INTO Users ( id , age , User_Name , Email , Followers , User_Following ) 
-VALUES 
-(1 , 10 , "Bro" , "Bro1@gmail.com" , 100 , 120 ) ,
-(3 , 60 , "Alex" , "Bro2@gmail.com" , 400 , 125 ) , 
-(5 , 20 , "Blop" , "Bro3@gmail.com" , 300 , 130 ) , 
-(9 , 30 , "Gork" , "Bro4@gmail.com" , 200 , 135 ) ;
-
--- SELECT age , id FROM Users ; 
-
--- SELECT * FROM Users ;
-
--- SELECT DISTINCT age FROM Users ; 
-
-SELECT * FROM Users
-WHERE Followers >= 200;
-
-SELECT 
-    name, Followers, age
-FROM
-    Users
-WHERE
-    age >= 18;
-    
-SELECT name , age , Followers , email 
-FROM Users
--- WHERE age > 15 AND Followers > 200 ;
--- WHERE age > 15 OR Followers > 200 ; 
--- WHERE age BETWEEN 15 AND 17 ; 
--- WHERE email IN ("Bro4@gmail.com" , "Bro3@gmail.com")
--- WHERE age IN ( 14 , 16 )
--- WHERE age NOT IN ( 14 , 16 )  
-LIMIT 2 ;  
-
-
-SELECT name , age , Followers
-FROM Users 
-ORDER BY Followers ASC  ;
--- ORDER BY Followers DESC 
-
-SELECT MAX(Followers) ;
-SELECT MAX(age)
-FROM Users ; 
-
-SELECT COUNT(age)
-FROM Users
-WHERE age = 14 ; 
-
-SELECT AVG(avg) ;
-SELECT MIN(avg) ;
-SELECT SUM(age) 
-
-
-
-
-
+-- Aggregate functions
+SELECT MAX(salary) FROM Tesla_Employees;
+SELECT MIN(salary) FROM Tesla_Employees;
+SELECT COUNT(salary) FROM Tesla_Employees;
+SELECT AVG(salary) FROM Tesla_Employees;
+SELECT SUM(salary) FROM Tesla_Employees;
