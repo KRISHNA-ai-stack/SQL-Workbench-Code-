@@ -18,9 +18,9 @@ CREATE TABLE Tesla_Employees (
 );
 
 -- Insert records
-INSERT INTO Tesla_Employees 
-(first_name, last_name, department, position, salary, hire_date, email, phone, location, manager_id)
-VALUES
+INSERT INTO Tesla_Employees (
+    first_name, last_name, department, position, salary, hire_date, email, phone, location, manager_id
+) VALUES
 ('Elon', 'Musk', 'Management', 'CEO', 1000000.00, '2010-07-01', 'elon.musk@tesla.com', '9876543210', 'Austin', NULL),
 ('Franz', 'von Holzhausen', 'Design', 'Chief Designer', 450000.00, '2012-04-15', 'franz.h@tesla.com', '9988776655', 'Los Angeles', 1),
 ('Drew', 'Baglino', 'Engineering', 'SVP of Powertrain', 400000.00, '2013-09-20', 'drew.b@tesla.com', '9123456789', 'Austin', 1),
