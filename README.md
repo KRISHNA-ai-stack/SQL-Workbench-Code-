@@ -1,4 +1,4 @@
-# 🚀 TESLA EMPLOYEE DATABASE PROJECT
+# 🚀 TESLA EMPLOYEE DATABASE PROJECT 
 
 This project demonstrates how to create and manage a structured employee database for a fictional company named **Tesla** using **MySQL**.  
 It includes examples of DDL, DML, and DCL-related SQL commands for creating tables, inserting records, updating data, and modifying the database schema.
